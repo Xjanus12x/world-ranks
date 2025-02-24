@@ -3,7 +3,7 @@
 export default function GlobalError() {
   return (
     <html>
-      <body>
+      <body className="min-h-screen flex items-center justify-center bg-grayishDark text-lightGray">
         <div>
           <h1 className="text-2xl mb-4 font-bold">Something went wrong</h1>
           <button

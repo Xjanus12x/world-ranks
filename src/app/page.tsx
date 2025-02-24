@@ -29,7 +29,6 @@ export default async function CountryExplorer({
     }
   });
 
-  
   return (
     <section className="bg-grayishDark  px-2 pb-2 sm:border-mutedGray sm:border max-w-2xl sm:rounded-xl mx-auto">
       <CountryFilters results={countries!.length} />
