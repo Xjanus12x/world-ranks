@@ -155,7 +155,7 @@ export function CountryFilters({ results = 0 }: CountryFiltersProps) {
             <label
               key={region.id}
               className={`text-sm px-4 py-1 rounded-full focus-within:ring-lightGray focus-within:ring-2 ${
-                filters.regions.includes(region.id) ? "bg-dark" : ""
+                filters.regions.includes(region.id) ? "bg-mutedGray" : ""
               }`}
               htmlFor={region.id}
             >
