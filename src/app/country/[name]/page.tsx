@@ -1,19 +1,28 @@
 import { fetchBorderCountries } from "@/data/fetchBorderCountries";
 import { fetchCountryDetails } from "@/data/fetchCountryDetails";
 import { ChevronLeft } from "lucide-react";
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-
 type CountryDetailsProps = {
   params: Promise<{ name: string }>;
 };
+// ✅ Generate Dynamic Metadata
+export async function generateMetadata({
+  params,
+}: CountryDetailsProps): Promise<Metadata> {
+  const { name } = await params;
+  const [country] = await fetchCountryDetails(name);
+
+  return {
+    title: `${country.name.common} - Country Details`,
+    description: `Explore detailed information about ${country.name.common}, including population, area, capital, languages, and neighboring countries.`,
+  };
+}
+
 export default async function CountryDetails({ params }: CountryDetailsProps) {
   const { name } = await params;
-  console.log(name);
-
   const [countryDetails] = await fetchCountryDetails(name);
-  console.log(countryDetails.borders);
-
   const borderDetails = await fetchBorderCountries(countryDetails.borders);
 
   return (
